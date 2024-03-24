@@ -53,7 +53,34 @@ What is the role of the Os in terms of resources?
 4.0 What does the Os need to implement virtualization?
     -mechanisms: e.g stop/start prgramm
     -policies: Descision making alghorithms. e.g which process will run next will be decided by a scheduling policie.
-    
+
+4.1 What are a process's constitutes?
+    -memory, specifically its address space
+    -registers: instruction Pointer/programm counter. stack pointer, frame pointer
+    -"Finally, programs often access persistent storage devices too. Such I/O information might include a list of the files the process currently has open." what exactly.
+
+4.2 Name five must have process api's
+    -create, wait, destroy, status, miscellanous(composed of or containing a variety of things;) control
+
+4.3 hows a process is created?
+    -load code and static data(initialized variables)
+    -allocate mem for run-time stack aka stack
+    -(allocate mem for heap)
+    -give 3 open filedescriptor (read/write terminal, error) 
+
+4.4 what information does the os tracks regarding a process and how?
+    - The os needs to track various types of information about a process. e.g register information, process state
+    - os saves o.m information in the process list data structure
+
+
+4.5 Why does the os keep track of the process state in the process list?
+    -for context switching. If a process for examples calls an i/o api and waits, it only makes sense to switch to a different process so that the cpu has something to do. Freeying the process state allows us to use it later and "revive" the process.
+
+4.6 What is the individual structer that stores information about a process called (hint PCB)?
+    - Process controll block or process descriptor
+
+
+
 
 
     

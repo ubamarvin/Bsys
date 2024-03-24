@@ -8,5 +8,7 @@ How does the exec() call work, does it create a new process?
 What is a unix shell?
 What is a unix system?
 
+6.1
+what is limited direct execution
 
 

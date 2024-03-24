@@ -7,6 +7,7 @@ What is an operating systems responsibility?
 1.F Describe virtualization, concurrency and persistence each in one sentence.
     -The OS takes a physical resource and transforms it into a virtual form of itself.
     -function running within the same memory space(does each function then "thinks" it has a private cpu?)
+    -programs share one phzsical device, os manages that no data is lost
 
 
 1.F List three advantages of virtualization

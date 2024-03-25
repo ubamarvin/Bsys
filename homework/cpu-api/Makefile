@@ -1,6 +1,6 @@
 CC = clang
 CFLAGS = -Wall -Wextra 
-TARGET = $(basename $(SRC))
+TARGET = $(basename $(SRC)) 
 SRC = one.c
 
 $(TARGET): $(SRC)

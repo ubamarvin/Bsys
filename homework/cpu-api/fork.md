@@ -96,6 +96,21 @@ the value of x?
 
 4. Write a program that calls fork() and then calls some form of exec() to run the program /bin/ls. See if you can try all of the variants of exec(), including (on Linux) execl(), execle(), execlp(), execv(), execvp(), and execvpe(). Why do you think there are so many variants of the same basic call?
 
+>>Multiple variants provide flexibility.
+When a new process is created using the 'exec' family of functions, it can inherit the environment of the parent process or specify its own environment
+
+>> execl(), execv() inherit the enviroment variables of the parent process automatically. They use the external variable "environ", an array of strings representing the e v of parent.
+
+>>E.g "execle() and execvp() allow the caller to specify the environment of the executed program"- https://linux.die.net/man/3/execl. In this context enviroment refers to a collection of environment variables(system configuration, user preferences, runtime parameters) which are associated with a process.
+        PATH=/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin
+        HOME=/home/user
+        LANG=en_US.UTF-8
+
+>>
+
+
+
+
 
 5. Nowwriteaprogramthatuseswait()towaitforthechildprocess to finish in the parent. What does wait() return? What happens if you use wait() in the child?
 >> When the Child process State is "DONE" (maybe not the correct word), wait() returns the childs PID (number) which is greater than Parents PID
@@ -103,9 +118,22 @@ the value of x?
 >>when wait called in the child, the child process waits and executes after the parent process. Wait does not return the parents PID but -1. Maybe because Childs PID - 1 = parents PId.
 
 
-6. Write a slight modification of the previous program, this time using waitpid() instead of wait(). When would waitpid() be useful? 
+6. Write a slight modification of the previous program, this time using waitpid() instead of wait(). When would waitpid() be useful?
+>>"The waitpid() system call suspends execution of the calling process until a child specified by pid argument has changed state. By default, waitpid() waits only for terminated children, but this behavior is modifiable via the options argument, as described below." - https://linux.die.net/man/2/waitpid
+
 
 7. Write a program that creates a child process, and then in the child closes standardoutput(STDOUT FILENO).Whathappensifthechild calls printf() to print some output after closing the descriptor?
-
+>>nothin gets printed to the std output.
 
 8. Write a program that creates two children, and connects the standard output of one to the standard input of the other, using the pipe() system call.
+
+9. bootloader ist hardware speyifisch
+pc boot:
+bios, bootloader, kernel sind unabhaenig voneinader
+
+10 .interrputs
+forces jmp move if
+hardware hat timer,welcher interrupt auskloesen kanns, cpu erkennt interrupt via bus, art of interrupt zeigt wohoin forken, this switches controll to cpu. hardware timer pingt in nem bestimmten intervall zb alle 100k instructions
+
+11. fork copyonwrite
+erst wenn einer der prozesse mehr als liest wird der heap u. stack neu kopiert, davor benutzen beide den selben

@@ -76,3 +76,36 @@
 
                                     a+h, h+i
 
+
+
+
+----------------------Coding------------------------------------
+
+1.Writeaprogramthatcallsfork(). Beforecallingfork(),havethe main process access a variable (e.g., x) and set its value to something (e.g., 100). What value is the variable in the child process? What happens to the variable when both the child and parent change 
+the value of x?
+
+>> Fork() creates a new process with its own stack, adresses space, and meta data such as the PCB (I mean the data structure in which info about the process is tracked) therefore nothing "Strange" happens as parent and child do not access or modify the variable x concurrently
+
+
+2. Write a program that opens a file (with the open() system call) and then calls fork() to create a new process. Can both the child and parent access the file descriptor returned by open()? What happens when they are writing to the file concurrently, i.e., at the same time?
+>> both can access the fd, should they not? What exactly is a fd again? Conccurrent writing results in both writing in their call order
+
+3. Write another program using fork(). The child process should print “hello”; the parentprocessshouldprint“goodbye”. Youshould try to ensure that the child process always prints first; can you do this without calling wait() in the parent?
+>> just call sleep(1) inside the parent. Not deterministic as for some odd reason the child could lag behind but practically it works.
+
+
+4. Write a program that calls fork() and then calls some form of exec() to run the program /bin/ls. See if you can try all of the variants of exec(), including (on Linux) execl(), execle(), execlp(), execv(), execvp(), and execvpe(). Why do you think there are so many variants of the same basic call?
+
+
+5. Nowwriteaprogramthatuseswait()towaitforthechildprocess to finish in the parent. What does wait() return? What happens if you use wait() in the child?
+>> When the Child process State is "DONE" (maybe not the correct word), wait() returns the childs PID (number) which is greater than Parents PID
+
+>>when wait called in the child, the child process waits and executes after the parent process. Wait does not return the parents PID but -1. Maybe because Childs PID - 1 = parents PId.
+
+
+6. Write a slight modification of the previous program, this time using waitpid() instead of wait(). When would waitpid() be useful? 
+
+7. Write a program that creates a child process, and then in the child closes standardoutput(STDOUT FILENO).Whathappensifthechild calls printf() to print some output after closing the descriptor?
+
+
+8. Write a program that creates two children, and connects the standard output of one to the standard input of the other, using the pipe() system call.

@@ -15,7 +15,7 @@ int main () {
         
         printf("Hello, output is open\n");
         close(STDOUT_FILENO);
-        printf("Hello, this shdnt print\n");
+        printf("Hello, this shdnt print\n"); // printf retunrs -1 
 
 
     } else { //parent rc=PiD child

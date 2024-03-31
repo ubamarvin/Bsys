@@ -12,6 +12,7 @@ int main (int argc, char *argv[]) {
         fprintf(stderr, "fork failed\n");
     } else if (rc == 0) { //child gets zero
         int rc_wait = wait(NULL);
+        // -1 wenn es keine kinder hat
         printf("Waited for %d\n", rc_wait);
         printf("Hello\n");
 

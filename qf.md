@@ -29,3 +29,23 @@ What is an operating systems responsibility?
 
 1.F whats a mechanism?
     -how ot is done (low level code)
+
+
+4.f explain direct execution?
+direct execution allows user process tu run directly on hardware
+
+4.f explain issues with direct execution
+user process can fuck with system
+user process could run forever
+user process could do smthing slow like i/o, effectively stalling the cpu
+
+4.f what is the solution?
+limited direct execution
+
+4.f what is limited direct execution
+os and hardware maintain some control
+
+3.f
+if getpid doesnt return that means the system is fucked
+
+instructions haben auch virtuelle adressen
